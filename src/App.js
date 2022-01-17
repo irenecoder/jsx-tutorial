@@ -1,35 +1,45 @@
 import React from 'react';
 import './App.css';
 
-const displayEmojiName = event => alert(event.target.id);
-function App() {
+
+const displayEmojiName = event=>alert(event.target.id);
+const emojis = [
+  {
+    emoji: '😀',
+    name: "test grinning face"
+    },
+    {
+    emoji: '🎉',
+    name: "party popper"
+    },
+    {
+    emoji: '💃',
+    name: "woman dancing"
+    }
+]
+function App(){
   const greeting = "greeting";
+  const displayAction = false;
   return (
     <div className="container">
-  <h1 id={greeting}>Hello jsx</h1>
-  <p>This is jsx</p>
-  <ul>
-    <li>
-      <button onClick={displayEmojiName}>
-        <span role="img" aria-label="grinning face" id="grinning face"></span>
+      <h1>Road Jockey</h1>
+     {displayAction&& <p id={greeting}>A peer to peer car sharing app</p>}
+      <ul>
+        {emojis.map(emoji=>(
+           <li key={emoji.name}>
+            <button onClick={displayEmojiName}>
+            <span role="img" aria-label={emoji.name} id={emoji.name}>{emoji.emoji}</span>
 
-      </button>
-    </li>
-    <li>
-      <button onClick={displayEmojiName}>
-        <span role="img" aria-label="party popper" id="party popper"></span>
-        
-      </button>
-    </li>
-    <li>
-      <button onClick={displayEmojiName}>
-        <span role="img" aria-label="woman dancing" id="woman dancing"></span>
-        
-      </button>
-    </li>
-  </ul>
-  </div>
+            </button>
+            
+          </li>
+        ))
+        }
+      </ul>
+       
+      
+
+    </div>
   )
 }
-
 export default App;
